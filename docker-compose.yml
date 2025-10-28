@@ -1,0 +1,18 @@
+version: '3.8'
+services:
+  # Nombre del servicio
+  web:
+    # Construye la imagen usando el Dockerfile en el directorio actual
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: vitejs_crud_posts
+    # Mapea el puerto 5173 de tu máquina al 5173 del contenedor
+    ports:
+      - "3002:3002"
+    # Monta volúmenes
+    volumes:
+      # Sincroniza tu código local con el del contenedor
+      - .:/app
+      # Evita que node_modules local sobreescriba el del contenedor
+      - /app/node_modules
