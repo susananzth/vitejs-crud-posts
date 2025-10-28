@@ -17,6 +17,26 @@ export const getPosts = async () => {
 };
 
 /**
+ * Crea un nuevo post.
+ * @param {object} postData - El objeto del post a crear (ej. { title, body, userId: 1 })
+ * @returns {Promise<object>} - Una promesa que resuelve al post creado.
+ */
+export const createPost = async (postData) => {
+  try {
+    const response = await fetch(API_URL, {
+      method: "POST",
+      body: JSON.stringify(postData),
+      headers: { "Content-type": "application/json; charset=UTF-8" },
+    });
+    if (!response.ok) throw new Error("Error al crear post");
+    return await response.json();
+  } catch (error) {
+    console.error(error);
+    return null;
+  }
+};
+
+/**
  * Obtiene un único post por su ID.
  * @param {number|string} id - El ID del post.
  * @returns {Promise<object|null>} - Una promesa que resuelve al post.

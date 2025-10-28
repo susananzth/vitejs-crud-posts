@@ -18,6 +18,12 @@ function PostItem({ post, onDelete }) {
         >
           Ver
         </Link>
+        <Link
+          to={`/posts/editar/${post.id}`}
+          className="bg-yellow-500 hover:bg-yellow-600 text-white font-semibold py-1 px-3 rounded-lg text-sm transition duration-200"
+        >
+          Editar
+        </Link>
         <button
           onClick={() => onDelete(post.id)}
           className="bg-red-500 hover:bg-red-600 text-white font-semibold py-1 px-3 rounded-lg text-sm transition duration-200"
