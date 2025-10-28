@@ -15,3 +15,37 @@ export const getPosts = async () => {
     return []; // Devuelve un array vacío en caso de error
   }
 };
+
+/**
+ * Obtiene un único post por su ID.
+ * @param {number|string} id - El ID del post.
+ * @returns {Promise<object|null>} - Una promesa que resuelve al post.
+ */
+export const getPostById = async (id) => {
+  try {
+    const response = await fetch(`${API_URL}/${id}`);
+    if (!response.ok) throw new Error("Error al cargar el post");
+    return await response.json();
+  } catch (error) {
+    console.error(error);
+    return null;
+  }
+};
+
+/**
+ * Elimina un post.
+ * @param {number|string} id - El ID del post a eliminar.
+ * @returns {Promise<boolean>} - True si tuvo éxito, false si no.
+ */
+export const deletePost = async (id) => {
+  try {
+    const response = await fetch(`${API_URL}/${id}`, {
+      method: "DELETE",
+    });
+    if (!response.ok) throw new Error("Error al eliminar post");
+    return true; // Éxito
+  } catch (error) {
+    console.error(error);
+    return false; // Error
+  }
+};
