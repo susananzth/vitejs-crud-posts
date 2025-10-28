@@ -22,7 +22,11 @@ function PostDetailPage() {
   }, [id]);
 
   if (isLoading) {
-    return <div className="p-10 text-center text-xl">Cargando post...</div>;
+    return (
+      <div className="p-10 text-center text-xl dark:text-slate-200">
+        Cargando post...
+      </div>
+    );
   }
 
   if (!post) {
@@ -35,16 +39,27 @@ function PostDetailPage() {
 
   return (
     <div className="container mx-auto max-w-2xl px-4 py-10">
-      <div className="bg-white shadow-lg rounded-lg p-8">
-        <h1 className="text-3xl font-bold text-gray-800 mb-4">{post.title}</h1>
-        <p className="text-gray-600 text-lg mb-6">{post.body}</p>
-        <div className="border-t pt-4">
-          <p className="text-sm text-gray-500">ID de Post: {post.id}</p>
-          <p className="text-sm text-gray-500">ID de Usuario: {post.userId}</p>
+      <div className="bg-white dark:bg-slate-800 rounded-xl shadow-xl dark:shadow-none dark:ring-1 dark:ring-slate-700 p-8">
+        <h1 className="text-3xl font-bold text-slate-900 dark:text-white mb-4">
+          {post.title}
+        </h1>
+
+        <p className="text-slate-600 dark:text-slate-400 text-lg mb-6">
+          {post.body}
+        </p>
+
+        <div className="border-t border-slate-200 dark:border-slate-700 pt-4">
+          <p className="text-sm text-slate-500 dark:text-slate-400">
+            ID de Post: {post.id}
+          </p>
+          <p className="text-sm text-slate-500 dark:text-slate-400">
+            ID de Usuario: {post.userId}
+          </p>
         </div>
+
         <Link
           to="/posts"
-          className="inline-block mt-6 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg"
+          className="inline-block mt-8 px-5 py-2.5 rounded-lg text-sm font-bold text-white bg-blue-500 shadow-lg shadow-blue-500/30 transition-all duration-300 ease-in-out hover:bg-blue-400 hover:shadow-blue-400/40 focus:ring-4 focus:ring-blue-500/50 focus:outline-none"
         >
           &larr; Volver a la lista
         </Link>

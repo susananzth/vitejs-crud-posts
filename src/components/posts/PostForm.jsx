@@ -9,6 +9,15 @@ import { useState, useEffect } from "react";
 function PostForm({ onSubmit, initialData = null, onCancel }) {
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
+  const commonInputStyles = `
+    w-full px-4 py-3 rounded-lg 
+    bg-white dark:bg-slate-800 
+    text-slate-900 dark:text-slate-100
+    border border-slate-300 dark:border-slate-600
+    placeholder-slate-400 dark:placeholder-slate-500
+    focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500
+    transition-colors
+  `;
 
   // Este efecto sincroniza el estado del formulario con `initialData`
   // Se usa para cargar los datos del post cuando hacemos clic en "Editar"
@@ -35,10 +44,13 @@ function PostForm({ onSubmit, initialData = null, onCancel }) {
   return (
     <form
       onSubmit={handleSubmit}
-      className="bg-gray-100 p-6 rounded-lg shadow-md mb-10"
+      className="bg-white dark:bg-slate-800 p-8 rounded-xl shadow-lg dark:shadow-none dark:ring-1 dark:ring-slate-700"
     >
-      <div className="mb-4">
-        <label htmlFor="title" className="block text-gray-700 font-bold mb-2">
+      <div className="mb-5">
+        <label
+          htmlFor="title"
+          className="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-2"
+        >
           Título
         </label>
         <input
@@ -46,27 +58,36 @@ function PostForm({ onSubmit, initialData = null, onCancel }) {
           id="title"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
-          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className={commonInputStyles}
           placeholder="Escribe el título"
         />
       </div>
-      <div className="mb-4">
-        <label htmlFor="body" className="block text-gray-700 font-bold mb-2">
+      <div className="mb-6">
+        <label
+          htmlFor="body"
+          className="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-2"
+        >
           Contenido
         </label>
         <textarea
           id="body"
           value={body}
           onChange={(e) => setBody(e.target.value)}
-          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className={`${commonInputStyles} min-h-[120px]`}
           rows="4"
           placeholder="Escribe el contenido"
         />
       </div>
-      <div className="flex gap-4 mt-6">
+      <div className="flex gap-4">
         <button
           type="submit"
-          className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg transition duration-200"
+          className="
+            flex-1 px-5 py-3 rounded-lg text-sm font-bold text-white 
+            bg-cyan-500 shadow-lg shadow-cyan-500/30
+            transition-all duration-300 ease-in-out
+            hover:bg-cyan-400 hover:shadow-cyan-400/40
+            focus:ring-4 focus:ring-cyan-500/50 focus:outline-none
+          "
         >
           {initialData ? "Actualizar Post" : "Guardar Post"}
         </button>
@@ -74,7 +95,14 @@ function PostForm({ onSubmit, initialData = null, onCancel }) {
           <button
             type="button"
             onClick={onCancel}
-            className="bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-lg transition duration-200"
+            className="
+              flex-1 px-5 py-3 rounded-lg text-sm font-bold 
+              text-slate-700 dark:text-slate-300 
+              bg-slate-100 dark:bg-slate-700
+              hover:bg-slate-200 dark:hover:bg-slate-600
+              focus:ring-4 focus:ring-slate-500/50 focus:outline-none
+              transition-colors
+            "
           >
             Cancelar
           </button>

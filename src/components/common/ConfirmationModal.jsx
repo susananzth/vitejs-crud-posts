@@ -12,26 +12,29 @@ function ConfirmationModal({ isOpen, onClose, onConfirm, title, message }) {
   return (
     // Fondo oscuro (backdrop)
     <div
-      className="fixed inset-0 bg-black bg-opacity-60 z-40 flex justify-center items-center"
+      className="fixed inset-0 bg-black/70 z-40 flex justify-center items-center"
       onClick={onClose} // Cierra el modal si se hace clic fuera
     >
       {/* Contenedor del Modal */}
       <div
-        className="bg-white p-6 rounded-lg shadow-xl z-50 max-w-sm w-full"
+        className="bg-white dark:bg-slate-800 p-6 rounded-lg shadow-xl z-50 max-w-sm w-full mx-4"
         onClick={(e) => e.stopPropagation()} // Evita que el clic se propague al fondo
       >
-        <h3 className="text-xl font-bold text-gray-800 mb-4">{title}</h3>
-        <p className="text-gray-700 mb-6">{message}</p>
+        <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-4">
+          {title}
+        </h3>
+        <p className="text-slate-600 dark:text-slate-400 mb-6">{message}</p>
+
         <div className="flex justify-end gap-4">
           <button
             onClick={onClose}
-            className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-lg transition-colors"
+            className="px-5 py-2.5 rounded-lg text-sm font-bold text-slate-700 dark:text-slate-300 bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 focus:ring-4 focus:ring-slate-500/50 focus:outline-none transition-colors"
           >
             Cancelar
           </button>
           <button
             onClick={onConfirm}
-            className="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg transition-colors"
+            className="px-5 py-2.5 rounded-lg text-sm font-bold text-white bg-red-600 shadow-lg shadow-red-600/30 transition-all duration-300 ease-in-out hover:bg-red-500 hover:shadow-red-500/40 focus:ring-4 focus:ring-red-500/50 focus:outline-none"
           >
             Eliminar
           </button>

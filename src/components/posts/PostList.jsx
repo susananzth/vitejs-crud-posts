@@ -9,7 +9,9 @@ import PostItem from "./PostItem";
 function PostList({ posts, onEdit, onDelete }) {
   if (posts.length === 0) {
     return (
-      <p className="text-center text-gray-500">No hay posts para mostrar.</p>
+      <p className="text-center text-slate-900 dark:text-white">
+        No hay posts para mostrar.
+      </p>
     );
   }
 
