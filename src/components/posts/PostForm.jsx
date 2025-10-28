@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import Button from "../common/Button";
 
 /**
  * Props que recibe:
@@ -79,33 +80,18 @@ function PostForm({ onSubmit, initialData = null, onCancel }) {
         />
       </div>
       <div className="flex gap-4">
-        <button
-          type="submit"
-          className="
-            flex-1 px-5 py-3 rounded-lg text-sm font-bold text-white 
-            bg-cyan-500 shadow-lg shadow-cyan-500/30
-            transition-all duration-300 ease-in-out
-            hover:bg-cyan-400 hover:shadow-cyan-400/40
-            focus:ring-4 focus:ring-cyan-500/50 focus:outline-none
-          "
-        >
+        <Button type="submit" variant="primary" className="flex-1">
           {initialData ? "Actualizar Post" : "Guardar Post"}
-        </button>
+        </Button>
         {onCancel && (
-          <button
+          <Button
             type="button"
+            variant="secondary"
             onClick={onCancel}
-            className="
-              flex-1 px-5 py-3 rounded-lg text-sm font-bold 
-              text-slate-700 dark:text-slate-300 
-              bg-slate-100 dark:bg-slate-700
-              hover:bg-slate-200 dark:hover:bg-slate-600
-              focus:ring-4 focus:ring-slate-500/50 focus:outline-none
-              transition-colors
-            "
+            className="flex-1"
           >
             Cancelar
-          </button>
+          </Button>
         )}
       </div>
     </form>

@@ -1,8 +1,7 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import * as postService from "../services/postService";
-
 import PostList from "../components/posts/PostList";
+import Button from "../components/common/Button";
 import ConfirmationModal from "../components/common/ConfirmationModal";
 
 function PostListPage() {
@@ -62,18 +61,9 @@ function PostListPage() {
         <h1 className="text-4xl font-bold text-slate-900 dark:text-white">
           Gestor de Posts
         </h1>
-        {/* Botón "Crear" que navega a la nueva ruta */}
-        <Link
-          to="/posts/nuevo"
-          className="
-            inline-block px-5 py-2.5 rounded-lg text-sm font-bold text-white
-            bg-cyan-500 shadow-lg shadow-cyan-500/30
-            transition-all duration-300 ease-in-out
-            hover:bg-cyan-400 hover:shadow-cyan-400/40
-            focus:ring-4 focus:ring-cyan-500/50 focus:outline-none"
-        >
+        <Button to="/posts/nuevo" variant="primary">
           Crear Nuevo Post
-        </Link>
+        </Button>
       </div>
 
       {isLoading ? (
