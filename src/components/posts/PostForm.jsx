@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
+import { faHeading, faParagraph } from "@fortawesome/free-solid-svg-icons";
 import Button from "../common/Button";
+import Input from "../common/Input";
 
 /**
  * Props que recibe:
@@ -10,15 +12,6 @@ import Button from "../common/Button";
 function PostForm({ onSubmit, initialData = null, onCancel }) {
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
-  const commonInputStyles = `
-    w-full px-4 py-3 rounded-lg 
-    bg-white dark:bg-slate-800 
-    text-slate-900 dark:text-slate-100
-    border border-slate-300 dark:border-slate-600
-    placeholder-slate-400 dark:placeholder-slate-500
-    focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500
-    transition-colors
-  `;
 
   // Este efecto sincroniza el estado del formulario con `initialData`
   // Se usa para cargar los datos del post cuando hacemos clic en "Editar"
@@ -47,38 +40,30 @@ function PostForm({ onSubmit, initialData = null, onCancel }) {
       onSubmit={handleSubmit}
       className="bg-white dark:bg-slate-800 p-8 rounded-xl shadow-lg dark:shadow-none dark:ring-1 dark:ring-slate-700"
     >
-      <div className="mb-5">
-        <label
-          htmlFor="title"
-          className="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-2"
-        >
-          Título
-        </label>
-        <input
-          type="text"
-          id="title"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-          className={commonInputStyles}
-          placeholder="Escribe el título"
-        />
-      </div>
-      <div className="mb-6">
-        <label
-          htmlFor="body"
-          className="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-2"
-        >
-          Contenido
-        </label>
-        <textarea
-          id="body"
-          value={body}
-          onChange={(e) => setBody(e.target.value)}
-          className={`${commonInputStyles} min-h-[120px]`}
-          rows="4"
-          placeholder="Escribe el contenido"
-        />
-      </div>
+      <Input
+        label="Título"
+        id="title"
+        name="title"
+        icon={faHeading}
+        placeholder="Escribe el título"
+        value={title}
+        onChange={(e) => setTitle(e.target.value)}
+        className="mb-5"
+      />
+
+      <Input
+        as="textarea"
+        label="Contenido"
+        id="body"
+        name="body"
+        icon={faParagraph}
+        placeholder="Escribe el contenido"
+        value={body}
+        onChange={(e) => setBody(e.target.value)}
+        rows={5}
+        className="mb-6"
+      />
+
       <div className="flex gap-4">
         <Button type="submit" variant="primary" className="flex-1">
           {initialData ? "Actualizar Post" : "Guardar Post"}
