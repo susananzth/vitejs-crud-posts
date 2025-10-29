@@ -7,7 +7,7 @@ const API_URL = "https://jsonplaceholder.typicode.com/posts";
 export const getPosts = async () => {
   try {
     // Traemos solo 10 para el ejemplo
-    const response = await fetch(`${API_URL}?_limit=10`);
+    const response = await fetch(`${API_URL}`);
     if (!response.ok) throw new Error("Error al cargar posts");
     return await response.json();
   } catch (error) {

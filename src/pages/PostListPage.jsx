@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import * as postService from "../services/postService";
-import PostList from "../components/posts/PostList";
+import PostTable from "../components/posts/PostTable";
 import Button from "../components/common/Button";
 import ConfirmationModal from "../components/common/ConfirmationModal";
 
@@ -14,6 +14,7 @@ function PostListPage() {
 
   // Cargar posts al iniciar
   useEffect(() => {
+    // Patrón de carga de datos: Iniciar carga, llamar al servicio, manejar éxito/error.
     setIsLoading(true);
     postService
       .getPosts()
@@ -22,13 +23,12 @@ function PostListPage() {
         setIsLoading(false);
       })
       .catch((err) => {
-        console.error(err);
+        console.error("Error al obtener los posts:", err);
         setIsLoading(false);
       });
-  }, []);
+  }, []); // El array vacío asegura que solo se ejecuta al montar el componente
 
-  // Paso 1: Abrir el modal
-  // Esta función se pasa al PostItem
+  // Paso 1: Abrir el modal. Esta función se pasa al PostTable
   const handleDeleteRequest = (id) => {
     setPostToDelete(id); // Guarda el ID
     setModalIsOpen(true); // Abre el modal
@@ -43,12 +43,14 @@ function PostListPage() {
   // Paso 3: Confirmar eliminación
   const handleConfirmDelete = async () => {
     if (postToDelete) {
+      // Llamada al servicio de eliminación
       const success = await postService.deletePost(postToDelete);
+
       if (success) {
-        // Actualiza el estado local
+        // Actualiza el estado local (optimistic update)
+        // Patrón de Inmutabilidad: Usamos .filter() para no mutar el estado anterior.
         setPosts(posts.filter((post) => post.id !== postToDelete));
       } else {
-        // (Opcional) Mostrar un "toast" de error
         console.error("Error al eliminar el post");
       }
       handleCloseModal(); // Cierra el modal
@@ -56,7 +58,7 @@ function PostListPage() {
   };
 
   return (
-    <div className="container mx-auto max-w-3xl px-4 py-10">
+    <div className="container mx-auto max-w-5xl px-4 py-10">
       <div className="flex justify-between items-center mb-8">
         <h1 className="text-4xl font-bold text-slate-900 dark:text-white">
           Gestor de Posts
@@ -69,8 +71,8 @@ function PostListPage() {
       {isLoading ? (
         <p className="text-center text-gray-500">Cargando posts...</p>
       ) : (
-        <PostList
-          posts={posts}
+        <PostTable
+          posts={posts} // Pasa los datos
           onDelete={handleDeleteRequest} // Pasa la función para ABRIR el modal
         />
       )}
