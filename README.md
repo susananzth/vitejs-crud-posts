@@ -8,7 +8,7 @@
 
 ---
 
-## 🌟 Descripción del Proyecto (Para Reclutadores Técnicos)
+## 🌟 Descripción del Proyecto
 
 Este proyecto es una **Single Page Application (SPA)** construida con **Vite.js** y **React** que demuestra la implementación de un **Data Grid Avanzado** consumiendo una API REST pública (JSONPlaceholder).
 
