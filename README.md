@@ -8,7 +8,7 @@
 
 ---
 
-## 🌟 Descripción del Proyecto (Para Reclutadores Técnicos)
+## 🌟 Descripción del Proyecto
 
 Este proyecto es una **Single Page Application (SPA)** construida con **Vite.js** y **React** que demuestra la implementación de un **Data Grid Avanzado** consumiendo una API REST pública (JSONPlaceholder).
 
@@ -43,7 +43,7 @@ Asegúrate de tener instalado:
 Abre tu terminal y ejecuta:
 
 ```bash
-git clone [https://github.com/susananzth/vitejs-crud-posts.git](https://github.com/susananzth/vitejs-crud-posts.git)
+git clone https://github.com/susananzth/vitejs-crud-posts.git
 cd vitejs-crud-posts
 ```
 ### 3. Instalar Dependencias
