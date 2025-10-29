@@ -43,7 +43,7 @@ Asegúrate de tener instalado:
 Abre tu terminal y ejecuta:
 
 ```bash
-git clone [https://github.com/susananzth/vitejs-crud-posts.git](https://github.com/susananzth/vitejs-crud-posts.git)
+git clone https://github.com/susananzth/vitejs-crud-posts.git
 cd vitejs-crud-posts
 ```
 ### 3. Instalar Dependencias
