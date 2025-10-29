@@ -4,9 +4,6 @@ import tailwindcss from '@tailwindcss/vite'
 
 // https://vite.dev/config/
 export default defineConfig({
-  // Configuración de GitHub Pages.
-  base: '/vitejs-crud-posts/',
-
   plugins: [
     react(),
     tailwindcss(),
