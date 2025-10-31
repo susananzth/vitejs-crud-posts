@@ -14,7 +14,7 @@ RUN npm install
 COPY . .
 
 # Exponemos el puerto de Vite
-EXPOSE 3002
+EXPOSE 5173
 
 # El comando para iniciar la aplicación
 CMD ["npm", "run", "dev"]

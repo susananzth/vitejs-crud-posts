@@ -9,7 +9,7 @@ services:
     container_name: vitejs_crud_posts
     # Mapea el puerto 5173 de tu máquina al 5173 del contenedor
     ports:
-      - "3002:3002"
+      - "3001:5173"
     # Monta volúmenes
     volumes:
       # Sincroniza tu código local con el del contenedor
